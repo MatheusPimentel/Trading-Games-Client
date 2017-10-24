@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login.vue'
 import PrivateTemplate from '../templates/PrivateTemplate.vue'
 import Anuncios from '@/components/Anuncios.vue'
+import Anuncio from '@/components/Anuncio.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
           path: '/private/anuncios',
           name: 'Anuncios',
           component: Anuncios
+        },
+        {
+          path: '/private/anuncios/anuncio',
+          name: 'Anuncio',
+          component: Anuncio
         }
       ]
     },

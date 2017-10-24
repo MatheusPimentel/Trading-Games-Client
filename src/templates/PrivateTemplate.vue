@@ -17,11 +17,13 @@
           </b-nav-form>
 
           <b-nav-item-dropdown right>
+
             <!-- Using button-content slot -->
             <template slot="button-content">
               <em>Usuário</em>
             </template>
             <b-dropdown-item href="#">Configurações</b-dropdown-item>
+            <b-dropdown-item href="#">Início</b-dropdown-item>
             <b-dropdown-item href="#">Meus Anúncios</b-dropdown-item>
             <b-dropdown-item href="#">Sair</b-dropdown-item>
           </b-nav-item-dropdown>

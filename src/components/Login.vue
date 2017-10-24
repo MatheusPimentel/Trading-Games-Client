@@ -59,7 +59,7 @@
                                 type="password" required
                                 placeholder="Sua senha"
                   ></b-form-input>
-                </b-form-group>
+                </b-form-group>np
               </div>
             </div>
           </b-form>
