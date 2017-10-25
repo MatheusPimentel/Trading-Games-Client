@@ -8,13 +8,13 @@
 
       <b-collapse is-nav id="nav_collapse">
 
+        <b-nav is-nav-bar>
+          <b-nav-item href="#" @click="irAnuncio()">Início</b-nav-item>
+          <b-nav-item href="#" @click="irMeusAnuncios()">Meus anúncios</b-nav-item>
+        </b-nav>
+
         <!-- Right aligned nav items -->
         <b-nav is-nav-bar class="ml-auto">
-
-          <b-nav-form>
-            <b-form-input size="sm" class="mr-sm-6" type="text" placeholder="Search"/>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-          </b-nav-form>
 
           <b-nav-item-dropdown right>
 
@@ -22,10 +22,8 @@
             <template slot="button-content">
               <em>Usuário</em>
             </template>
-            <b-dropdown-item href="#">Configurações</b-dropdown-item>
-            <b-dropdown-item href="#">Início</b-dropdown-item>
-            <b-dropdown-item href="#">Meus Anúncios</b-dropdown-item>
-            <b-dropdown-item href="#">Sair</b-dropdown-item>
+            <b-dropdown-item href @click="irUsuario()">Configurações</b-dropdown-item>
+            <b-dropdown-item href>Sair</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>
 
@@ -38,7 +36,18 @@
 
 <script>
   export default {
-    name: 'private-template'
+    name: 'private-template',
+    methods: {
+      irUsuario () {
+        this.$router.push('/private/usuario')
+      },
+      irAnuncio () {
+        this.$router.push('/private/anuncios')
+      },
+      irMeusAnuncios () {
+        this.$router.push('/private/meusanuncios')
+      }
+    }
   }
 </script>
 

@@ -1,6 +1,12 @@
 # trading-games
 
 > A Vue.js project
+> Trabalho escolar de Programação para Web
+
+> Integrantes:
+> Matheus Vinicius Pimentel Cabreira
+> Wender Galan Benage
+> Joao Vitor
 
 ## Build Setup
 

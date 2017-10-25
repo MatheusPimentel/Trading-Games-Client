@@ -1,6 +1,11 @@
 <template>
   <div>
     <div class="container">
+      <b-nav-form id="b-nav-form" style="margin-bottom: 10px">
+        <b-form-input class="mr-sm-6" type="text" placeholder="Pesquisar"/>
+        <b-button class="my-2 my-sm-0" type="submit">Procurar</b-button>
+      </b-nav-form>
+
       <b-card>
         <b-media>
           <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />

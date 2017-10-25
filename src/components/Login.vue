@@ -17,10 +17,12 @@
             <b-form-input v-model="usuarioLogin.userPassword" size="sm" class="mr-sm-2" type="password" placeholder="Senha"/>
             <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="success" @click="login()">Entrar</b-button>
           </b-nav-form>
+          <!--final form cadastrar-->
         </b-nav>
 
       </b-collapse>
     </b-navbar>
+    <!--final navegação superior-->
 
     <!--form cadastrar-->
     <div class="container">
@@ -38,7 +40,7 @@
 
               <div class="col-md-6">
                 <b-form-group label="Sobrenome:" label-for="sobrenome" @click="setFocus('sobrenome')">
-                  <b-form-input v-model="novoUsuario.userLastName" id="userLastName" type="text" required></b-form-input>
+                  <b-form-input v-model="novoUsuario.secondName" id="userLastName" type="text" required></b-form-input>
                 </b-form-group>
               </div>
             </div>
@@ -59,7 +61,7 @@
                                 type="password" required
                                 placeholder="Sua senha"
                   ></b-form-input>
-                </b-form-group>np
+                </b-form-group>
               </div>
             </div>
           </b-form>
@@ -67,11 +69,13 @@
         <b-button variant="primary" @click="cadastrar()">Cadastrar</b-button>
       </b-card>
     </div>
+    <!--final form cadastrar-->
   </div>
 </template>
 
 <script>
   import Axios from 'axios'
+  import Constantes from '../util/contantes.js'
   export default {
     name: 'login',
     data () {
@@ -87,7 +91,7 @@
       login () {
         Axios({
           method: 'POST',
-          url: 'http://localhost:8080/user/login',
+          url: Constantes.API_URL + '/user/login',
           data: this.usuarioLogin
         }).then((response) => {
           if (response.data) {
@@ -102,7 +106,7 @@
       cadastrar () {
         Axios({
           method: 'POST',
-          url: 'http://localhost:8080/user/login',
+          url: Constantes.API_URL + '/user/register',
           data: this.novoUsuario
         }).then((response) => {
           if (response.data === false) {
