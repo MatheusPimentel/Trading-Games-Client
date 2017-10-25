@@ -11,6 +11,7 @@
         <b-nav is-nav-bar>
           <b-nav-item href="#" @click="irAnuncio()">Início</b-nav-item>
           <b-nav-item href="#" @click="irMeusAnuncios()">Meus anúncios</b-nav-item>
+          <b-nav-item href="#" @click="irInserirAnuncio()">Inserir anúncio</b-nav-item>
         </b-nav>
 
         <!-- Right aligned nav items -->
@@ -46,6 +47,9 @@
       },
       irMeusAnuncios () {
         this.$router.push('/private/meusanuncios')
+      },
+      irInserirAnuncio () {
+        this.$router.push('/private/inseriranuncio')
       }
     }
   }

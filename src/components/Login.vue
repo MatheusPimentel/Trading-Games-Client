@@ -17,7 +17,7 @@
             <b-form-input v-model="usuarioLogin.userPassword" size="sm" class="mr-sm-2" type="password" placeholder="Senha"/>
             <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="success" @click="login()">Entrar</b-button>
           </b-nav-form>
-          <!--final form cadastrar-->
+          <!--final form login-->
         </b-nav>
 
       </b-collapse>

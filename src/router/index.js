@@ -6,6 +6,7 @@ import Anuncios from '@/components/Anuncios.vue'
 import Anuncio from '@/components/Anuncio.vue'
 import Usuario from '@/components/Usuario.vue'
 import MeusAnuncios from '@/components/MeusAnuncios.vue'
+import InserirAnuncio from '@/components/InserirAnuncio.vue'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
           path: '/private/meusanuncios',
           name: 'MeusAnuncios',
           component: MeusAnuncios
+        },
+        {
+          path: '/private/inseriranuncio',
+          name: 'InserirAnuncio',
+          component: InserirAnuncio
         }
       ]
     },
