@@ -60,8 +60,8 @@
         </b-card-body>
         <b-list-group flush>
           <b-list-group-item>Telefone pra contato</b-list-group-item>
-          <b-list-group-item>Email pessoal</b-list-group-item>
           <b-list-group-item>Valor do produto</b-list-group-item>
+          <b-list-group-item>Nome do Autor</b-list-group-item>
           <b-list-group-item>Data da postagem do anúncio</b-list-group-item>
         </b-list-group>
       </b-card>

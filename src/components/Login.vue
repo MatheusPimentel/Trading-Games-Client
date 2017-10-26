@@ -40,7 +40,7 @@
 
               <div class="col-md-6">
                 <b-form-group label="Sobrenome:" label-for="sobrenome" @click="setFocus('sobrenome')">
-                  <b-form-input v-model="novoUsuario.secondName" id="userLastName" type="text" required></b-form-input>
+                  <b-form-input v-model="novoUsuario.secondName" id="secondName" type="text" required></b-form-input>
                 </b-form-group>
               </div>
             </div>
