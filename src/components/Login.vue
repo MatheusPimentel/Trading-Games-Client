@@ -95,6 +95,7 @@
           data: this.usuarioLogin
         }).then((response) => {
           if (response.data) {
+            this.$store.commit('inicializarSessao', response.data)
             this.$router.push('/private/anuncios')
           } else {
             alert('Email ou senha inválido!')
@@ -109,13 +110,11 @@
           url: Constantes.API_URL + '/user/register',
           data: this.novoUsuario
         }).then((response) => {
-          if (response.data === false) {
+          if (response.data) {
             this.$router.push('/private/anuncios')
-          } else {
-            alert('Cadastro já existe!')
           }
-        }).catch(() => {
-          alert('Erro!')
+        }).catch((err) => {
+          alert(err.message)
         })
       }
     }

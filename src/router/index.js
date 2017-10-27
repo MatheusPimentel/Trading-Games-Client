@@ -7,6 +7,7 @@ import Anuncio from '@/components/Anuncio.vue'
 import Usuario from '@/components/Usuario.vue'
 import MeusAnuncios from '@/components/MeusAnuncios.vue'
 import InserirAnuncio from '@/components/InserirAnuncio.vue'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -17,6 +18,13 @@ export default new Router({
       name: 'PrivateTemplate',
       redirect: '/private/anuncios',
       component: PrivateTemplate,
+      beforeEnter (to, from, next) {
+        if (store.state.sessao) {
+          next()
+        } else {
+          next('/login')
+        }
+      },
       children: [
         {
           path: '/private/anuncios',
@@ -48,7 +56,14 @@ export default new Router({
     {
       path: '/login',
       component: Login,
-      name: 'login'
+      name: 'login',
+      beforeEnter (to, from, next) {
+        if (store.state.sessao) {
+          next(from.name)
+        } else {
+          next()
+        }
+      }
     }
   ]
 })

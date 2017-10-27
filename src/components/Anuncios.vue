@@ -26,12 +26,23 @@
 </template>
 
 <script>
-//  import Axios from 'axios'
+  import Axios from 'axios'
+  import Constantes from '../util/contantes.js'
   export default {
     name: 'anuncios',
-
+    data () {
+      return {
+        pesquisar: {}
+      }
+    },
     methods: {
-//    IMPLEMENTAR COMO IR PRA PAGINA ANUNCIO
+      buscar () {
+        Axios({
+          methos: 'POST',
+          url: Constantes.API_URL + '/post/search',
+          data: this.pesquisar
+        })
+      }
     }
   }
 </script>
