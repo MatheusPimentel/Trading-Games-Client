@@ -111,6 +111,7 @@
           data: this.novoUsuario
         }).then((response) => {
           if (response.data) {
+            this.$store.commit('inicializarSessao', response.data)
             this.$router.push('/private/anuncios')
           }
         }).catch((err) => {

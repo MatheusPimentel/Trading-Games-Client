@@ -112,7 +112,7 @@
   import Axios from 'axios'
   import Constantes from '../util/contantes.js'
   export default {
-    name: 'InserirAnuncio',
+    name: 'inserirAnuncio',
     data () {
       return {
         novoAnuncio: {}

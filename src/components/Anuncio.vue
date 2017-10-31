@@ -71,6 +71,7 @@
 
 <script>
   export default {
+    name: 'anuncio',
     data: {
       slide: 0,
       sliding: null

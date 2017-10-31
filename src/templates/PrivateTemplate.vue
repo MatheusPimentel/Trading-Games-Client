@@ -24,7 +24,7 @@
               <em>Usuário</em>
             </template>
             <b-dropdown-item href @click="irUsuario()">Configurações</b-dropdown-item>
-            <b-dropdown-item href>Sair</b-dropdown-item>
+            <b-dropdown-item href @click="sair()">Sair</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>
 
@@ -50,6 +50,10 @@
       },
       irInserirAnuncio () {
         this.$router.push('/private/inseriranuncio')
+      },
+      sair () {
+        this.$store.commit('finalizarSessao', undefined)
+        this.$router.push('/login')
       }
     }
   }
