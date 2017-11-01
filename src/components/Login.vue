@@ -97,6 +97,7 @@
           if (response.data) {
             this.$store.commit('inicializarSessao', response.data)
             this.$router.push('/private/anuncios')
+            console.log(response.data)
           } else {
             alert('Email ou senha inválido!')
           }
