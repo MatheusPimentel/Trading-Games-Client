@@ -6,24 +6,26 @@
               style="max-width: 90rem;"
               class="mb-10">
 
+        <!--<b-form-input class="mr-sm-2" type="text" v-model="filtro" placeholder="Pesquise pelo titulo ou descrição"/>-->
+        <!--<b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>-->
+
         <div>
           <b-nav-form id="b-nav-form" style="margin-bottom: 10px">
-            <b-form-input class="mr-sm-2" type="text" placeholder="Pesquisar"/>
-            <b-button class="my-2 my-sm-0" type="submit" variant="success">Procurar</b-button>
           </b-nav-form>
+          <b-row class="text-center" style="margin-bottom: 10px">
+            <b-col cols="4"><b-form-input class="mr-sm-2" type="text" v-model="filtro" placeholder="Pesquise pelo titulo ou descrição"/></b-col>
+            <b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>
+          </b-row>
 
-          <b-card>
+          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px">
             <b-media>
               <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />
-              <h5 class="mt-0">Nome produto</h5>
+              <h5 class="mt-0">{{ anuncio.postTitle }}</h5>
               <p>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-                sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-                in faucibus.
+                {{ anuncio.postDescription }}
               </p>
               <p>
-                R$: Valor
+                R$: {{ anuncio.productPrice }}
               </p>
             </b-media>
           </b-card>
@@ -40,17 +42,25 @@
     name: 'anuncios',
     data () {
       return {
-        pesquisar: {}
+        filtro: '',
+        anuncios: []
       }
     },
     methods: {
       buscar () {
         Axios({
-          methos: 'POST',
-          url: Constantes.API_URL + '/post/search',
-          data: this.pesquisar
+          method: 'GET',
+          url: Constantes.API_URL + `/post/search?query=${this.filtro}&category=${this.filtro}`
+        }).then((response) => {
+          this.anuncios = response.data
+          console.log(this.anuncios)
+        }).catch(() => {
+          alert('falha ao buscar anuncios')
         })
       }
+    },
+    mounted () {
+      this.buscar()
     }
   }
 </script>
