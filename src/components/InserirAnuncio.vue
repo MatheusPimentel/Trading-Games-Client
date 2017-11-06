@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="container">
+  <div class="container" style="margin-top: 20px">
+    <div class="">
       <b-card title="Insira seu anúncio"
               tag="article"
               class="mb-10">
@@ -132,6 +132,8 @@
             alert('Inserido com sucesso"')
             this.$router.push('private/meusanuncios')
           }
+        }).catch((erro) => {
+          alert('Desculpe, erro ao inserir o anuncio')
         })
       }
     }
@@ -139,7 +141,5 @@
 </script>
 
 <style>
-  div.container {
-    margin-top: 20px;
-  }
+
 </style>

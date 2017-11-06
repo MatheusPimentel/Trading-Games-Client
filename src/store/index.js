@@ -14,9 +14,6 @@ export default new Vuex.Store({
     finalizarSessao (state, payload) {
       state.sessao = payload
     },
-    retornaSessao (state) {
-      return state.sessao
-    },
     mudaSessao (state, payload) {
       state.sessao = payload
     }

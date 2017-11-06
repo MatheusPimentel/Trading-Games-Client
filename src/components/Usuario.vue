@@ -73,6 +73,8 @@
           url: Constantes.API_URL + '/user/alter',
           data: this.alterUser
         }).then((response) => {
+          this.alterUser = response.data
+          console.log(this.alterUser)
           if (response.data) {
             this.$store.commit('mudaSessao', response.data)
             alert('Alteração realizada com sucesso!')
@@ -81,6 +83,9 @@
           alert(err)
         })
       }
+    },
+    mouted () {
+      this.alterrarUsuario()
     }
   }
 </script>

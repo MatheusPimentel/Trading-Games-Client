@@ -6,9 +6,6 @@
               style="max-width: 90rem;"
               class="mb-10">
 
-        <!--<b-form-input class="mr-sm-2" type="text" v-model="filtro" placeholder="Pesquise pelo titulo ou descrição"/>-->
-        <!--<b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>-->
-
         <div>
           <b-nav-form id="b-nav-form" style="margin-bottom: 10px">
           </b-nav-form>
@@ -17,7 +14,7 @@
             <b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>
           </b-row>
 
-          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px">
+          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px" @click="irAnuncio()">
             <b-media>
               <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />
               <h5 class="mt-0">{{ anuncio.postTitle }}</h5>
@@ -57,6 +54,10 @@
         }).catch(() => {
           alert('falha ao buscar anuncios')
         })
+      },
+      irAnuncio () {
+//        tratar em como levar os objetos do anuncio clicado para Anuncio
+        this.$router.push('/private/anuncios/anuncio')
       }
     },
     mounted () {
