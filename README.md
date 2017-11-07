@@ -5,8 +5,7 @@
 ## Integrantes:
 Matheus Vinicius Pimentel Cabreira,
 Wender Galan Benage,
-Joao Vitor,
-Walquiria Lopes
+Joao Vitor
 
 ## Build Setup
 
