@@ -23,7 +23,7 @@
             <template slot="button-content">
               <em>Usuário</em>
             </template>
-            <b-dropdown-item href @click="irUsuario()">Configurações</b-dropdown-item>
+            <b-dropdown-item href @click="irUsuario()">Meu Cadastro</b-dropdown-item>
             <b-dropdown-item href @click="sair()">Sair</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-nav>

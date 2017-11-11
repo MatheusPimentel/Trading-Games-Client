@@ -1,12 +1,19 @@
 <template>
   <div class="container">
     <div>
-      <b-card title="Configuração de usuário"
+      <b-card title="Meu Cadastro"
               tag="article"
               style="max-width: 90rem;"
               class="mb-10">
+        <div>
+          <p>Respeitamos a sua privacidade. Asseguramos que seus dados não serão fornecidos a terceiros.</p>
+        </div>
+      </b-card>
+
+      <b-card>
         <div style="padding-bottom: 10px">
           <b-col cols="5">
+            <h5>Meus Dados</h5>
             <p>
               <!--mostra o nome conforme a alteração, vale tambem para os outros-->
               Nome: {{ alterUser.nome }}
@@ -38,17 +45,42 @@
                           placeholder="Email"></b-form-input>
           </b-col>
         </div>
+        <!--  botão salvar alterações -->
+        <b-button href="#" variant="warning" @click="alterarUsuario()">Salvar</b-button>
+      </b-card>
+
+      <b-card style="margin-bottom: 10px">
+        <h5>Quer alterar a sua senha?</h5>
+        <div style="padding-bottom: 10px">
+          <b-col cols="5">
+            <p>Senha atual:</p>
+            <b-form-input v-model="alterUser.password"
+                          type="password"
+                          placeholder="Digite sua senha atual"></b-form-input>
+          </b-col>
+        </div>
 
         <div style="padding-bottom: 10px">
           <b-col cols="5">
-            <p>Senha:</p>
+            <p>Nova Senha:</p>
             <b-form-input v-model="alterUser.password"
                           type="password"
-                          placeholder="Enter your name"></b-form-input>
+                          placeholder="Digite sua nova senha"></b-form-input>
           </b-col>
         </div>
-        <b-button href="#" variant="warning" @click="alterarUsuario()">Salvar alterações</b-button>
+
+        <div style="padding-bottom: 10px">
+          <b-col cols="5">
+            <p>Repetir nova senha:</p>
+            <b-form-input v-model="alterUser.password"
+                          type="password"
+                          placeholder="Repita sua nova senha"></b-form-input>
+          </b-col>
+        </div>
+        <!--  botão alterar senha -->
+        <b-button href="#" variant="warning" @click="alterarUsuario()">Alterar Senha</b-button>
       </b-card>
+
     </div>
   </div>
 </template>
@@ -59,7 +91,7 @@
   import Constantes from '../util/contantes.js'
 
   export default {
-//    retorna o objeto dos usuarios para poder ser manupulado
+//    retorna o objeto dos usuarios para poder ser manipulado
     data () {
       return {
         alterUser: {}
@@ -85,7 +117,7 @@
       }
     },
     mouted () {
-      this.alterrarUsuario()
+      this.alterarUsuario()
     }
   }
 </script>
