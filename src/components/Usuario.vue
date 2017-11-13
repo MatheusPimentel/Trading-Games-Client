@@ -5,13 +5,10 @@
               tag="article"
               style="max-width: 90rem;"
               class="mb-10">
-        <div>
-          <p>Respeitamos a sua privacidade. Asseguramos que seus dados não serão fornecidos a terceiros.</p>
-        </div>
-      </b-card>
+        <p>Respeitamos a sua privacidade. Asseguramos que seus dados não serão fornecidos a terceiros.</p>
+        <hr/>
 
-      <b-card>
-        <div style="padding-bottom: 10px">
+        <div style="padding-bottom: 10px; padding-top: 10px">
           <b-col cols="5">
             <h5>Meus Dados</h5>
             <p>
@@ -45,40 +42,33 @@
                           placeholder="Email"></b-form-input>
           </b-col>
         </div>
-        <!--  botão salvar alterações -->
-        <b-button href="#" variant="warning" @click="alterarUsuario()">Salvar</b-button>
-      </b-card>
 
-      <b-card style="margin-bottom: 10px">
-        <h5>Quer alterar a sua senha?</h5>
-        <div style="padding-bottom: 10px">
-          <b-col cols="5">
-            <p>Senha atual:</p>
-            <b-form-input v-model="alterUser.password"
-                          type="password"
-                          placeholder="Digite sua senha atual"></b-form-input>
-          </b-col>
-        </div>
+        <hr />
 
-        <div style="padding-bottom: 10px">
+        <div style="margin-bottom: 10px; margin-top: 10px">
           <b-col cols="5">
+            <h5>Quer alterar a sua senha?</h5>
             <p>Nova Senha:</p>
-            <b-form-input v-model="alterUser.password"
+            <b-form-input v-model="novaSenha"
                           type="password"
                           placeholder="Digite sua nova senha"></b-form-input>
           </b-col>
         </div>
 
-        <div style="padding-bottom: 10px">
+        <div style="margin-bottom: 10px">
           <b-col cols="5">
             <p>Repetir nova senha:</p>
             <b-form-input v-model="alterUser.password"
                           type="password"
                           placeholder="Repita sua nova senha"></b-form-input>
+            <b-alert show variant="danger" style="margin-top: 5px">Senhas não são iguais</b-alert>
           </b-col>
+
         </div>
         <!--  botão alterar senha -->
-        <b-button href="#" variant="warning" @click="alterarUsuario()">Alterar Senha</b-button>
+        <b-button href="#" variant="warning" @click="alterarUsuario()">Alterar Cadastro</b-button>
+
+
       </b-card>
 
     </div>
@@ -94,7 +84,8 @@
 //    retorna o objeto dos usuarios para poder ser manipulado
     data () {
       return {
-        alterUser: {}
+        alterUser: {},
+        novaSenha: ''
       }
     },
     methods: {
@@ -115,9 +106,6 @@
           alert(err)
         })
       }
-    },
-    mouted () {
-      this.alterarUsuario()
     }
   }
 </script>

@@ -26,48 +26,56 @@
 
     <!--form cadastrar-->
     <div class="container">
-      <b-card title="Cadastre-se"
-              tag="article"
-              class="mb-10">
-        <p class="card-text">
-          <b-form>
-            <div class="row">
-              <div class="col-md-6">
-                <b-form-group label="Nome:" label-for="nome" @click="setFocus('nome')">
-                  <b-form-input v-model="novoUsuario.userName" id="userName" type="text" required></b-form-input>
-                </b-form-group>
-              </div>
+      <div class="row">
+        <a href="//play.google.com/store" target="_blank">
+          <img src="https://uploaddeimagens.com.br/images/001/170/329/full/App_Trading_Games.png"
+               height="550" width="300" class="media-object  img-responsive img-thumbnail">
+        </a>
+        <b-col style="margin-left: 50px">
+          <b-card title="Cadastre-se"
+                  tag="article"
+                  class="mb-10">
+            <p class="card-text">
+              <b-form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <b-form-group label="Nome:" label-for="nome" @click="setFocus('nome')">
+                      <b-form-input v-model="novoUsuario.userName" id="userName" type="text" required></b-form-input>
+                    </b-form-group>
+                  </div>
 
-              <div class="col-md-6">
-                <b-form-group label="Sobrenome:" label-for="sobrenome" @click="setFocus('sobrenome')">
-                  <b-form-input v-model="novoUsuario.secondName" id="secondName" type="text" required></b-form-input>
-                </b-form-group>
-              </div>
-            </div>
+                  <div class="col-md-6">
+                    <b-form-group label="Sobrenome:" label-for="sobrenome" @click="setFocus('sobrenome')">
+                      <b-form-input v-model="novoUsuario.secondName" id="secondName" type="text" required></b-form-input>
+                    </b-form-group>
+                  </div>
+                </div>
 
-            <div class="row">
-              <div class="col-md-6">
-                <b-form-group label="Email" label-for="emai1-cadastro" @click="setFocus('email-cadastro')">
-                  <b-form-input v-model="novoUsuario.userEmail" id="userEmail"
-                                type="email" required
-                                placeholder="exemplo@gmail.com"
-                  ></b-form-input>
-                </b-form-group>
-              </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <b-form-group label="Email" label-for="emai1-cadastro" @click="setFocus('email-cadastro')">
+                      <b-form-input v-model="novoUsuario.userEmail" id="userEmail"
+                                    type="email" required
+                                    placeholder="exemplo@gmail.com"
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
 
-              <div class="col-md-6">
-                <b-form-group label="Senha" label-for="senha" @click="setFocus('senha')">
-                  <b-form-input v-model="novoUsuario.userPassword" id="userPassword"
-                                type="password" required
-                                placeholder="Sua senha"
-                  ></b-form-input>
-                </b-form-group>
-              </div>
-            </div>
-          </b-form>
-        </p>
-        <b-button variant="primary" @click="cadastrar()">Cadastrar</b-button>
-      </b-card>
+                  <div class="col-md-6">
+                    <b-form-group label="Senha" label-for="senha" @click="setFocus('senha')">
+                      <b-form-input v-model="novoUsuario.userPassword" id="userPassword"
+                                    type="password" required
+                                    placeholder="Sua senha"
+                      ></b-form-input>
+                    </b-form-group>
+                  </div>
+                </div>
+              </b-form>
+            </p>
+            <b-button variant="primary" @click="cadastrar()">Cadastrar</b-button>
+          </b-card>
+        </b-col>
+      </div>
     </div>
     <!--final form cadastrar-->
   </div>

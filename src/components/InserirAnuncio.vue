@@ -132,7 +132,7 @@
             alert('Inserido com sucesso"')
             this.$router.push('private/meusanuncios')
           }
-        }).catch((erro) => {
+        }).catch(() => {
           alert('Desculpe, erro ao inserir o anuncio')
         })
       }
