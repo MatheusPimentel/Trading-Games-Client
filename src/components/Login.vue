@@ -134,6 +134,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   div.container {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 </style>

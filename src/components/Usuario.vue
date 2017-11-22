@@ -61,7 +61,7 @@
             <b-form-input v-model="alterUser.password"
                           type="password"
                           placeholder="Repita sua nova senha"></b-form-input>
-            <b-alert show variant="danger" style="margin-top: 5px">Senhas não são iguais</b-alert>
+            <b-alert :show="show" variant="danger"  style="margin-top: 5px">Senhas não são iguais</b-alert>
           </b-col>
 
         </div>
@@ -85,7 +85,8 @@
     data () {
       return {
         alterUser: {},
-        novaSenha: ''
+        novaSenha: '',
+        show: false
       }
     },
     methods: {
@@ -105,6 +106,13 @@
         }).catch((err) => {
           alert(err)
         })
+      }
+    },
+    watch: {
+      novaSenha () {
+        if (this.novaSenha !== this.alterUser.password) {
+          this.show = true
+        }
       }
     }
   }

@@ -3,34 +3,35 @@
     <div class="">
       <b-card title="Insira seu anúncio"
               tag="article"
-              class="mb-10">
+              class="mb-10"
+              id="inserirAnuncio">
         <p class="card-text">
           <b-form>
             <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px">Imagem 1:</h4>
               <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file" v-model="novoAnuncio.file"></b-form-file>
+                <b-form-file accept=".jpg, .png, .gif" id="file" choose-label="Procurar" v-model="novoAnuncio.file"></b-form-file>
               </b-col>
             </div>
 
             <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px">Imagem 2:</h4>
               <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file2" v-model="novoAnuncio.file2"></b-form-file>
+                <b-form-file accept=".jpg, .png, .gif" id="file2" choose-label="Procurar" v-model="novoAnuncio.file2"></b-form-file>
               </b-col>
             </div>
 
             <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px">Imagem 3:</h4>
               <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file3" v-model="novoAnuncio.file3"></b-form-file>
+                <b-form-file accept=".jpg, .png, .gif" id="file3" choose-label="Procurar" v-model="novoAnuncio.file3"></b-form-file>
               </b-col>
             </div>
 
             <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px">Imagem 4:</h4>
               <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file4" v-model="novoAnuncio.file4"></b-form-file>
+                <b-form-file accept=".jpg, .png, .gif" id="file4" choose-label="Procurar" v-model="novoAnuncio.file4"></b-form-file>
               </b-col>
             </div>
             <hr>
@@ -111,11 +112,23 @@
 <script>
   import Axios from 'axios'
   import Constantes from '../util/contantes.js'
+
   export default {
     name: 'inserirAnuncio',
     data () {
       return {
-        novoAnuncio: {}
+        novoAnuncio: {
+          file1: {},
+          file2: {},
+          file3: {},
+          file4: {},
+          postDescription: '',
+          postTitle: '',
+          postCategory: '',
+          productPrice: 0,
+          postAuthor: '',
+          postNumbers: 0
+        }
       }
     },
     methods: {
@@ -123,10 +136,22 @@
         document.getElementById(fieldId).focus()
       },
       inserirAnuncio () {
+        var FormData = require('form-data')
+        let formData = new FormData()
+        formData.append('file1', this.novoAnuncio.file1)
+        formData.append('file2', this.novoAnuncio.file2)
+        formData.append('file3', this.novoAnuncio.file3)
+        formData.append('file4', this.novoAnuncio.file4)
+        formData.append('postDescription', this.novoAnuncio.postDescription)
+        formData.append('postTitle', this.novoAnuncio.postTitle)
+        formData.append('postCategory', this.novoAnuncio.postCategory)
+        formData.append('productPrice', this.novoAnuncio.productPrice)
+        formData.append('postAuthor', this.novoAnuncio.postAuthor)
+        formData.append('postNumbers', this.novoAnuncio.postNumbers)
         Axios({
           method: 'POST',
           url: Constantes.API_URL + '/post/insert',
-          data: this.novoUsuario
+          data: formData
         }).then((response) => {
           if (response.data) {
             alert('Inserido com sucesso"')
