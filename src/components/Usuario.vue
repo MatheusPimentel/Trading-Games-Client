@@ -61,7 +61,9 @@
             <b-form-input v-model="alterUser.password"
                           type="password"
                           placeholder="Repita sua nova senha"></b-form-input>
-            <b-alert :show="show" variant="danger"  style="margin-top: 5px">Senhas não são iguais</b-alert>
+
+            <!--alert-->
+            <b-alert :show="senhasDiferentes" variant="danger"  style="margin-top: 5px">Senhas não são iguais</b-alert>
           </b-col>
 
         </div>
@@ -108,10 +110,12 @@
         })
       }
     },
-    watch: {
-      novaSenha () {
+    computed: {
+      senhasDiferentes () {
+        console.log(this.novaSenha)
+        console.log(this.alterUser.password)
         if (this.novaSenha !== this.alterUser.password) {
-          this.show = true
+          return true
         }
       }
     }

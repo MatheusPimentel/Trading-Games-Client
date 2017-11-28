@@ -117,18 +117,7 @@
     name: 'inserirAnuncio',
     data () {
       return {
-        novoAnuncio: {
-          file1: {},
-          file2: {},
-          file3: {},
-          file4: {},
-          postDescription: '',
-          postTitle: '',
-          postCategory: '',
-          productPrice: 0,
-          postAuthor: '',
-          postNumbers: 0
-        }
+        novoAnuncio: {}
       }
     },
     methods: {
@@ -136,8 +125,8 @@
         document.getElementById(fieldId).focus()
       },
       inserirAnuncio () {
-        var FormData = require('form-data')
-        let formData = new FormData()
+        const FormData = require('form-data')
+        const formData = new FormData()
         formData.append('file1', this.novoAnuncio.file1)
         formData.append('file2', this.novoAnuncio.file2)
         formData.append('file3', this.novoAnuncio.file3)
