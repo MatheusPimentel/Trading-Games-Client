@@ -37,7 +37,7 @@ export default new Router({
           component: Anuncio
         },
         {
-          path: '/private/usuario',
+          path: '/private/usuario/:id',
           name: 'Usuario',
           component: Usuario
         },

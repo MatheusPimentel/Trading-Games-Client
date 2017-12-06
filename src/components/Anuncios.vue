@@ -3,7 +3,7 @@
     <div>
       <b-card title="Anuncios"
               tag="article"
-              style="max-width: 90rem;"
+              style="max-width: 90rem"
               class="mb-10">
 
         <div>
@@ -14,7 +14,7 @@
             <b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>
           </b-row>
 
-          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px" @click="irAnuncio()" href="#">
+          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px; cursor: pointer;" @click="irAnuncio()">
             <b-media>
               <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />
               <h5 class="mt-0">{{ anuncio.postTitle }}</h5>

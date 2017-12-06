@@ -40,7 +40,12 @@
     name: 'private-template',
     methods: {
       irUsuario () {
-        this.$router.push('/private/usuario')
+        this.$router.push({
+          name: 'Usuario',
+          params: {
+            id: this.$store.state.sessao.userId
+          }
+        })
       },
       irAnuncio () {
         this.$router.push('/private/anuncios')

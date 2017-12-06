@@ -11,24 +11,21 @@
         <div style="padding-bottom: 10px; padding-top: 10px">
           <b-col cols="5">
             <h5>Meus Dados</h5>
-            <p>
-              <!--mostra o nome conforme a alteração, vale tambem para os outros-->
-              Nome: {{ alterUser.nome }}
-            </p>
-            <b-form-input v-model="alterUser.nome"
-                          type="text"
-                          placeholder="Seu nome"></b-form-input>
+            <b-form-group label="Nome">
+              <b-form-input v-model="alterUser.userName"
+                            type="text"
+                            placeholder="Seu nome"></b-form-input>
+            </b-form-group>
           </b-col>
         </div>
 
         <div style="padding-bottom: 10px">
           <b-col cols="5">
-            <p>
-              Sobrenome: {{ alterUser.lastName }}
-            </p>
-            <b-form-input v-model="alterUser.lastName"
-                          type="text"
-                          placeholder="Sobrenome"></b-form-input>
+            <b-form-group label="Sobrenome">
+              <b-form-input v-model="alterUser.secondName"
+                            type="text"
+                            placeholder="Sobrenome"></b-form-input>
+            </b-form-group>
           </b-col>
         </div>
 
@@ -37,7 +34,7 @@
             <p>
               Email: {{ alterUser.email }}
             </p>
-            <b-form-input v-model="alterUser.email"
+            <b-form-input v-model="alterUser.userEmail"
                           type="email"
                           placeholder="Email"></b-form-input>
           </b-col>
@@ -87,7 +84,7 @@
     data () {
       return {
         alterUser: {},
-        novaSenha: '',
+        novaSenha: undefined,
         show: false
       }
     },
@@ -108,16 +105,20 @@
         }).catch((err) => {
           alert(err)
         })
+      },
+      setUserData () {
+        this.alterUser = this.$store.state.sessao
       }
     },
     computed: {
       senhasDiferentes () {
-        console.log(this.novaSenha)
-        console.log(this.alterUser.password)
         if (this.novaSenha !== this.alterUser.password) {
           return true
         }
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      next(vm => vm.setUserData())
     }
   }
 </script>

@@ -7,33 +7,33 @@
               id="inserirAnuncio">
         <p class="card-text">
           <b-form>
-            <div class="row" style="margin-bottom: 10px">
-              <h4 style="margin-left: 15px">Imagem 1:</h4>
-              <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file" choose-label="Procurar" v-model="novoAnuncio.file"></b-form-file>
-              </b-col>
-            </div>
+            <!--<div class="row" style="margin-bottom: 10px">-->
+              <!--<h4 style="margin-left: 15px">Imagem 1:</h4>-->
+              <!--<b-col cols="6">-->
+                <!--<b-form-file accept=".jpg, .png, .gif" id="file" choose-label="Procurar" v-model="novoAnuncio.file"></b-form-file>-->
+              <!--</b-col>-->
+            <!--</div>-->
 
-            <div class="row" style="margin-bottom: 10px">
-              <h4 style="margin-left: 15px">Imagem 2:</h4>
-              <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file2" choose-label="Procurar" v-model="novoAnuncio.file2"></b-form-file>
-              </b-col>
-            </div>
+            <!--<div class="row" style="margin-bottom: 10px">-->
+              <!--<h4 style="margin-left: 15px">Imagem 2:</h4>-->
+              <!--<b-col cols="6">-->
+                <!--<b-form-file accept=".jpg, .png, .gif" id="file2" choose-label="Procurar" v-model="novoAnuncio.file2"></b-form-file>-->
+              <!--</b-col>-->
+            <!--</div>-->
 
-            <div class="row" style="margin-bottom: 10px">
-              <h4 style="margin-left: 15px">Imagem 3:</h4>
-              <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file3" choose-label="Procurar" v-model="novoAnuncio.file3"></b-form-file>
-              </b-col>
-            </div>
+            <!--<div class="row" style="margin-bottom: 10px">-->
+              <!--<h4 style="margin-left: 15px">Imagem 3:</h4>-->
+              <!--<b-col cols="6">-->
+                <!--<b-form-file accept=".jpg, .png, .gif" id="file3" choose-label="Procurar" v-model="novoAnuncio.file3"></b-form-file>-->
+              <!--</b-col>-->
+            <!--</div>-->
 
-            <div class="row" style="margin-bottom: 10px">
-              <h4 style="margin-left: 15px">Imagem 4:</h4>
-              <b-col cols="6">
-                <b-form-file accept=".jpg, .png, .gif" id="file4" choose-label="Procurar" v-model="novoAnuncio.file4"></b-form-file>
-              </b-col>
-            </div>
+            <!--<div class="row" style="margin-bottom: 10px">-->
+              <!--<h4 style="margin-left: 15px">Imagem 4:</h4>-->
+              <!--<b-col cols="6">-->
+                <!--<b-form-file accept=".jpg, .png, .gif" id="file4" choose-label="Procurar" v-model="novoAnuncio.file4"></b-form-file>-->
+              <!--</b-col>-->
+            <!--</div>-->
             <hr>
 
             <div class="row" style="margin-bottom: 10px">
@@ -82,21 +82,11 @@
             </div>
 
             <div class="row" style="margin-bottom: 10px">
-              <h4 style="margin-left: 15px; margin-top: 5px">Seu nome:</h4>
-              <div class="col-md-6">
-                <b-form-input id="postAuthor"
-                              v-model="novoAnuncio.postAuthor"
-                              type="text" required
-                ></b-form-input>
-              </div>
-            </div>
-
-            <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px; margin-top: 5px">Numero para contato:</h4>
               <div class="col-md-6">
                 <b-form-input id="postNumber"
                               v-model="novoAnuncio.postNumber"
-                              type="number" required
+                              type="text" required
                               placeholder=" DDD seguido do numero. Ex: 067981684840"
                 ></b-form-input>
               </div>
@@ -112,6 +102,7 @@
 <script>
   import Axios from 'axios'
   import Constantes from '../util/contantes.js'
+//  const FormData = require('form-data')
 
   export default {
     name: 'inserirAnuncio',
@@ -125,28 +116,29 @@
         document.getElementById(fieldId).focus()
       },
       inserirAnuncio () {
-        const FormData = require('form-data')
-        const formData = new FormData()
-        formData.append('file1', this.novoAnuncio.file1)
-        formData.append('file2', this.novoAnuncio.file2)
-        formData.append('file3', this.novoAnuncio.file3)
-        formData.append('file4', this.novoAnuncio.file4)
-        formData.append('postDescription', this.novoAnuncio.postDescription)
-        formData.append('postTitle', this.novoAnuncio.postTitle)
-        formData.append('postCategory', this.novoAnuncio.postCategory)
-        formData.append('productPrice', this.novoAnuncio.productPrice)
-        formData.append('postAuthor', this.novoAnuncio.postAuthor)
-        formData.append('postNumbers', this.novoAnuncio.postNumbers)
+//        const formData = new FormData()
+//        formData.append('file1', this.novoAnuncio.file1)
+//        formData.append('file2', this.novoAnuncio.file2)
+//        formData.append('file3', this.novoAnuncio.file3)
+//        formData.append('file4', this.novoAnuncio.file4)
+//        formData.append('postDescription', this.novoAnuncio.postDescription)
+//        formData.append('postTitle', this.novoAnuncio.postTitle)
+//        formData.append('postCategory', this.novoAnuncio.postCategory)
+//        formData.append('productPrice', this.novoAnuncio.productPrice)
+//        formData.append('postAuthor', this.novoAnuncio.postAuthor)
+//        formData.append('postNumbers', this.novoAnuncio.postNumbers)
+        this.novoAnuncio.postAuthor = this.$store.state.sessao.userId
         Axios({
           method: 'POST',
           url: Constantes.API_URL + '/post/insert',
-          data: formData
+          data: this.novoAnuncio
         }).then((response) => {
           if (response.data) {
             alert('Inserido com sucesso"')
             this.$router.push('private/meusanuncios')
           }
-        }).catch(() => {
+        }).catch((err) => {
+          console.log(err.response)
           alert('Desculpe, erro ao inserir o anuncio')
         })
       }
