@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+
+    <!--<img :src=""/>-->
     <div>
       <b-card title="Anuncios"
               tag="article"
@@ -16,7 +18,8 @@
 
           <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px; cursor: pointer;" @click="irAnuncio(anuncio.postId)">
             <b-media>
-              <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />
+              <b-img  slot="aside" :src="montarImagem(anuncio.postId)" width="150" height="150" alt="Não foi possível reproduzir a imagem" />
+
               <h5 class="mt-0">{{ anuncio.postTitle }}</h5>
               <p>
                 {{ anuncio.postDescription }}
@@ -60,6 +63,21 @@
           name: 'VisualizarAnuncio',
           params: { id }
         })
+      },
+      montarImagem (identificador) {
+        let images = []
+        Axios({
+          method: 'GET',
+          url: Constantes.API_URL + `/post/loadFiles?postId=${identificador}`
+        }).then((response) => {
+          images = response.data
+          console.log('deu certo')
+          console.log(images[0])
+        }).catch((err) => {
+          console.log('deu errado')
+          console.log(err.response)
+        })
+        return images[0]
       }
     },
     mounted () {
