@@ -7,34 +7,12 @@
               id="inserirAnuncio">
         <p class="card-text">
           <b-form>
-            <!--<div class="row" style="margin-bottom: 10px">-->
-              <!--<h4 style="margin-left: 15px">Imagem 1:</h4>-->
-              <!--<b-col cols="6">-->
-                <!--<b-form-file accept=".jpg, .png, .gif" id="file" choose-label="Procurar" v-model="novoAnuncio.file"></b-form-file>-->
-              <!--</b-col>-->
-            <!--</div>-->
-
-            <!--<div class="row" style="margin-bottom: 10px">-->
-              <!--<h4 style="margin-left: 15px">Imagem 2:</h4>-->
-              <!--<b-col cols="6">-->
-                <!--<b-form-file accept=".jpg, .png, .gif" id="file2" choose-label="Procurar" v-model="novoAnuncio.file2"></b-form-file>-->
-              <!--</b-col>-->
-            <!--</div>-->
-
-            <!--<div class="row" style="margin-bottom: 10px">-->
-              <!--<h4 style="margin-left: 15px">Imagem 3:</h4>-->
-              <!--<b-col cols="6">-->
-                <!--<b-form-file accept=".jpg, .png, .gif" id="file3" choose-label="Procurar" v-model="novoAnuncio.file3"></b-form-file>-->
-              <!--</b-col>-->
-            <!--</div>-->
-
-            <!--<div class="row" style="margin-bottom: 10px">-->
-              <!--<h4 style="margin-left: 15px">Imagem 4:</h4>-->
-              <!--<b-col cols="6">-->
-                <!--<b-form-file accept=".jpg, .png, .gif" id="file4" choose-label="Procurar" v-model="novoAnuncio.file4"></b-form-file>-->
-              <!--</b-col>-->
-            <!--</div>-->
-            <hr>
+            <div class="row" style="margin-bottom: 10px">
+              <h4 style="margin-left: 15px">Imagem 1:</h4>
+              <b-col cols="6">
+                <b-form-file accept="image/*" id="file" multiple choose-label="Procurar" v-model="files"></b-form-file>
+              </b-col>
+            </div>
 
             <div class="row" style="margin-bottom: 10px">
               <div class="container">
@@ -102,13 +80,13 @@
 <script>
   import Axios from 'axios'
   import Constantes from '../util/contantes.js'
-//  const FormData = require('form-data')
 
   export default {
     name: 'inserirAnuncio',
     data () {
       return {
-        novoAnuncio: {}
+        novoAnuncio: {},
+        files: null
       }
     },
     methods: {
@@ -116,27 +94,33 @@
         document.getElementById(fieldId).focus()
       },
       inserirAnuncio () {
-//        const formData = new FormData()
-//        formData.append('file1', this.novoAnuncio.file1)
-//        formData.append('file2', this.novoAnuncio.file2)
-//        formData.append('file3', this.novoAnuncio.file3)
-//        formData.append('file4', this.novoAnuncio.file4)
-//        formData.append('postDescription', this.novoAnuncio.postDescription)
-//        formData.append('postTitle', this.novoAnuncio.postTitle)
-//        formData.append('postCategory', this.novoAnuncio.postCategory)
-//        formData.append('productPrice', this.novoAnuncio.productPrice)
-//        formData.append('postAuthor', this.novoAnuncio.postAuthor)
-//        formData.append('postNumbers', this.novoAnuncio.postNumbers)
+        const formData = new FormData()
+        const arquivos = document.getElementById('file').files
+        for (let i = 0; i < arquivos.length; i++) {
+          formData.append('file', arquivos[i])
+        }
         this.novoAnuncio.postAuthor = this.$store.state.sessao.userId
         Axios({
           method: 'POST',
           url: Constantes.API_URL + '/post/insert',
           data: this.novoAnuncio
         }).then((response) => {
-          if (response.data) {
-            alert('Inserido com sucesso"')
-            this.$router.push('private/meusanuncios')
+          const anuncioInserido = response.data
+          if (!anuncioInserido) {
+            alert('Desculpe, erro ao inserir o anuncio')
+            return
           }
+          Axios({
+            method: 'POST',
+            url: Constantes.API_URL + `/post/upload?postId=${anuncioInserido.postId}`,
+            data: formData
+          }).then((response) => {
+            alert('Anuncio inserido com sucesso')
+            this.$router.push({ name: 'Anuncios' })
+          }).catch((err) => {
+            console.log(err.response)
+            alert('Falha ao inserir a imagem do anúncio!')
+          })
         }).catch((err) => {
           console.log(err.response)
           alert('Desculpe, erro ao inserir o anuncio')

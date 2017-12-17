@@ -14,7 +14,7 @@
             <b-button class="my-2 my-sm-0" type="submit" variant="success" @click="buscar()">Procurar</b-button>
           </b-row>
 
-          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px; cursor: pointer;" @click="irAnuncio()">
+          <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px; cursor: pointer;" @click="irAnuncio(anuncio.postId)">
             <b-media>
               <b-img slot="aside" blank blank-color="#ccc" width="150" alt="placeholder" />
               <h5 class="mt-0">{{ anuncio.postTitle }}</h5>
@@ -55,9 +55,11 @@
           alert('falha ao buscar anuncios')
         })
       },
-      irAnuncio () {
-//        tratar em como levar os objetos do anuncio clicado para Anuncio
-        this.$router.push('/private/anuncios/anuncio')
+      irAnuncio (id) {
+        this.$router.push({
+          name: 'VisualizarAnuncio',
+          params: { id }
+        })
       }
     },
     mounted () {

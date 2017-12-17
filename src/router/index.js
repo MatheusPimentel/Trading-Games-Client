@@ -32,8 +32,8 @@ export default new Router({
           component: Anuncios
         },
         {
-          path: '/private/anuncios/anuncio',
-          name: 'Anuncio',
+          path: '/private/anuncios/:id',
+          name: 'VisualizarAnuncio',
           component: Anuncio
         },
         {
