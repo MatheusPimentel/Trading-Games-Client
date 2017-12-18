@@ -62,8 +62,8 @@
             <div class="row" style="margin-bottom: 10px">
               <h4 style="margin-left: 15px; margin-top: 5px">Numero para contato:</h4>
               <div class="col-md-6">
-                <b-form-input id="postNumber"
-                              v-model="novoAnuncio.postNumber"
+                <b-form-input id="contactNumber"
+                              v-model="novoAnuncio.contactNumber"
                               type="text" required
                               placeholder=" DDD seguido do numero. Ex: 067981684840"
                 ></b-form-input>
@@ -99,7 +99,7 @@
         for (let i = 0; i < arquivos.length; i++) {
           formData.append('file', arquivos[i])
         }
-        this.novoAnuncio.postAuthor = this.$store.state.sessao.userId
+        this.novoAnuncio.postAuthor = this.$store.state.sessao.userName
         Axios({
           method: 'POST',
           url: Constantes.API_URL + '/post/insert',

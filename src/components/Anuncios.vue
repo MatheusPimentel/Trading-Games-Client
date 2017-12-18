@@ -18,8 +18,7 @@
 
           <b-card v-for="anuncio in anuncios" style="margin-bottom: 10px; cursor: pointer;" @click="irAnuncio(anuncio.postId)">
             <b-media>
-              <b-img  slot="aside" :src="montarImagem(anuncio.postId)" width="150" height="150" alt="Não foi possível reproduzir a imagem" />
-
+              <b-img  slot="aside" :src="montarUrlImagem(anuncio.postId)" width="200" height="200" alt="Não foi possível reproduzir a imagem" />
               <h5 class="mt-0">{{ anuncio.postTitle }}</h5>
               <p>
                 {{ anuncio.postDescription }}
@@ -78,6 +77,9 @@
           console.log(err.response)
         })
         return images[0]
+      },
+      montarUrlImagem (postId) {
+        return `${Constantes.API_URL}/post/buscarImagemCapa/${postId}`
       }
     },
     mounted () {

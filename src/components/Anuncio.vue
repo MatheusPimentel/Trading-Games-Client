@@ -11,7 +11,7 @@
       >
 
         <!-- Text slides with image -->
-        <b-carousel-slide v-for="img in imagens" :img-src="montarUrlImagem(img)"
+        <b-carousel-slide id="carousel1-slide" v-for="img in imagens" :img-src="montarUrlImagem(img)"
         ></b-carousel-slide>
 
       </b-carousel>
@@ -31,6 +31,7 @@
           <b-list-group-item>{{ anuncio.contactNumber }}</b-list-group-item>
           <b-list-group-item>{{ anuncio.productPrice }}</b-list-group-item>
           <b-list-group-item>{{ anuncio.postCategory }}</b-list-group-item>
+          <b-list-group-item>{{ anuncio.postAuthor }}</b-list-group-item>
         </b-list-group>
       </b-card>
     </div>
@@ -89,5 +90,9 @@
 
   div#b-card {
     padding-top: 20px;
+  }
+
+  #carousel1-slide {
+    max-height: 600px;
   }
 </style>
