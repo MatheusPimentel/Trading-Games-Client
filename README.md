@@ -1,11 +1,19 @@
 # trading-games
 
 > A Vue.js project
+## Descrição do projeto
+Este projeto foi desenvolvido para a conclusão de um trabalho da disciplina de programação para Web. O objetivo principal do trabalho era desenvolver um aplicativo que os usuarios pudessem fazer trocas e vendas de jogos ou produtos eletrônicos.
 
 ## Integrantes:
-Matheus Vinicius Pimentel Cabreira,
-Wender Galan Benage,
-Joao Vitor
+- Matheus Vinicius Pimentel Cabreira,
+- Wender Galan Benage,
+- Joao Vitor
+
+## Dependencias utilizadas para este projeto
+- Vue-router
+- BootstrapVue
+- Vuex
+- Axios
 
 ## Build Setup
 
